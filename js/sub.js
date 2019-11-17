@@ -1,0 +1,5 @@
+var SubClass = class {
+    constructor() {
+        
+    }
+}
