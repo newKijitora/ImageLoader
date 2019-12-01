@@ -1,9 +1,8 @@
-
-
-
 // もとになる画像
 var image = new Image();
 image.src = "images/totoro1.jpg";
+
+var loaded = false;
 
 // キャンバス要素の取得
 var canvas = document.getElementById("canvas");
@@ -19,11 +18,14 @@ if (canvas.getContext) {
     image.onload = function(event) {
         imageLoader.loadImage(image);
         imageLoader.draw(context, 1);
+        loaded = true;
     }
 
     // レンジの初期化
     var range = document.getElementById("range");
     range.addEventListener("input", function() {
-        imageLoader.draw(context, range.value);
+        if (loaded) {
+            imageLoader.draw(context, range.value);
+        }
     });
 }
