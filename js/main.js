@@ -1,6 +1,6 @@
 // もとになる画像
 var image = new Image();
-image.src = "images/totoro1.jpg";
+image.src = "images/kijitora.png";
 
 var loaded = false;
 
