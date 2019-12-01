@@ -17,7 +17,7 @@ if (canvas.getContext) {
     // 画像ロード時のイベント
     image.onload = function(event) {
         imageLoader.loadImage(image);
-        imageLoader.draw(context, 1);
+        imageLoader.draw(canvas, 1);
         loaded = true;
     }
 

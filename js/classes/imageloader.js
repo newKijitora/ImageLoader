@@ -1,6 +1,6 @@
 // ImageLoaderクラス
 // 画像データを内部に保持して外部のcanvasコンテキストに出力する
-var ImageLoader = class {
+class ImageLoader {
     
     // 初期化
     constructor() {
@@ -26,37 +26,39 @@ var ImageLoader = class {
         for (let i = 0; i < this.height; i++) {
             this.array[i] = new Array(this.width); // 配列の列（幅）
             for (let j = 0; j < this.width; j++) {
-                this.array[i][j] = new Pixel(j, i, 1, 1, context.getImageData(j, i, 1, 1));
+                this.array[i][j] = new Pixel(j, i, context.getImageData(j, i, 1, 1));
             }
         }
     }
 
     // 描画（保持する画素配列による塗りつぶし）
-    draw(context, dot) {
-        for (let i = 0; i < this.array.length / dot; i++) {
-            for (let j = 0; j < this.array[i].length / dot; j++) {
-                this.array[i * dot][j * dot].draw(context, dot);
+    draw(canvas, dot) {
+        if (canvas.getContext) {
+            canvas.width = this.width;
+            canvas.height = this.height;
+            var context = canvas.getContext("2d");
+            for (let i = 0; i < this.array.length / dot; i++) {
+                for (let j = 0; j < this.array[i].length / dot; j++) {
+                    this.array[i * dot][j * dot].fill(context, dot);
+                }
             }
         }
     }
 }
 
 // 画素クラス
-var Pixel = class {
-    
+class Pixel {
+
     // 初期化
-    constructor(x, y, width, height, pix) {
+    constructor(x, y, imageData) {
         this.posX = x; // 位置X
         this.posY = y; // 位置Y
-        this.width = width; // 画素横幅
-        this.height = height; // 画素縦幅
-        this.data = pix.data; // ピクセルデータ
-        this.rgba = "rgba(" + this.data[0] + "," + this.data[1] + "," + this.data[2] + "," + this.data[3] + ")"; // RGBA値
+        this.data = imageData.data; // ピクセルデータ
     }
     
     // 塗りつぶし
-    draw(context, dot) {
-        context.fillStyle = this.rgba; // 塗りつぶし色
+    fill(context, dot) {
+        context.fillStyle = "rgba(" + this.data[0] + "," + this.data[1] + "," + this.data[2] + "," + this.data[3] + ")"; // 塗りつぶし色
         context.fillRect(this.posX, this.posY, dot, dot); // 塗りつぶしの実行
     }
 }
