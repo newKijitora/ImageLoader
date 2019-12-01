@@ -8,9 +8,7 @@ var loaded = false;
 var canvas = document.getElementById("canvas");
 
 if (canvas.getContext) {
-    // コンテキストの取得    
-    var context = canvas.getContext("2d");
-
+    
     // 描画オブジェクト
     var imageLoader = new ImageLoader();
 
@@ -25,7 +23,7 @@ if (canvas.getContext) {
     var range = document.getElementById("range");
     range.addEventListener("input", function() {
         if (loaded) {
-            imageLoader.draw(context, range.value);
+            imageLoader.draw(canvas, range.value);
         }
     });
 }
