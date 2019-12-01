@@ -32,10 +32,10 @@ var ImageLoader = class {
     }
 
     // 描画（保持する画素配列による塗りつぶし）
-    draw(context) {
-        for (let i = 0; i < this.array.length; i++) {
-            for (let j = 0; j < this.array[i].length; j++) {
-                this.array[i][j].draw(context);
+    draw(context, dot) {
+        for (let i = 0; i < this.array.length / dot; i++) {
+            for (let j = 0; j < this.array[i].length / dot; j++) {
+                this.array[i * dot][j * dot].draw(context, dot);
             }
         }
     }
@@ -55,8 +55,8 @@ var Pixel = class {
     }
     
     // 塗りつぶし
-    draw(context) {
+    draw(context, dot) {
         context.fillStyle = this.rgba; // 塗りつぶし色
-        context.fillRect(this.posX, this.posY, this.width, this.height); // 塗りつぶしの実行
+        context.fillRect(this.posX, this.posY, dot, dot); // 塗りつぶしの実行
     }
 }
