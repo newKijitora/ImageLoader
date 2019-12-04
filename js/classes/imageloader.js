@@ -41,7 +41,7 @@ class ImageLoader {
             if (dot / 2 == 0) {
                 l = 1;
             } else {
-                l = dot / 2;
+                l = dot / 2 + 1;
             }
             for (let i = 0; i < this.array.length / dot; i++) {
                 for (let j = 0; j < this.array[i].length / dot; j++) {
