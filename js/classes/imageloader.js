@@ -40,13 +40,10 @@ class ImageLoader {
             for (let i = 0; i < this.array.length / dot; i++) {
                 for (let j = 0; j < this.array[i].length / dot; j++) {
                     let o = 0;
-                    if (dot / 2 > 0 && dot % 2 == 0) {
-                        o = Math.floor((dot / 2)) + 1;
-                    } else if (dot / 2 > 0 && dot % 2 == 1) {
+                    if (dot / 2 != 0) {
                         o = Math.floor((dot / 2));
                     }
-                     
-                    let style = "rgba(" + this.array[i * dot + o][j * dot+ o].data[0] + "," + this.array[i * dot + o][j * dot + o].data[1] + "," + this.array[i * dot + o][j * dot + o].data[2] + "," + this.array[i * dot + o][j * dot + o].data[3] + ")"; // 塗りつぶし色
+                    let style = "rgba(" + this.array[i * dot + o][j * dot + o].data[0] + "," + this.array[i * dot + o][j * dot + o].data[1] + "," + this.array[i * dot + o][j * dot + o].data[2] + "," + this.array[i * dot + o][j * dot + o].data[3] + ")"; // 塗りつぶし色
                     this.array[i * dot][j * dot].fill(context, dot, style);
                 }
             }
