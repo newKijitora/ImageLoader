@@ -38,12 +38,7 @@ class ImageLoader {
             canvas.width = this.width;
             canvas.height = this.height;
             var context = canvas.getContext("2d");
-            var p = dot % 2;
-            if (p != 0) {
-                l = dot / 2;
-            } else {
-                l = dot / 2 + 1;
-            }
+            l = dot / 2;
             for (let i = 0; i < this.array.length / dot; i++) {
                 for (let j = 0; j < this.array[i].length / dot; j++) {
                     this.array[i * l][j * l].fill(context, dot);
