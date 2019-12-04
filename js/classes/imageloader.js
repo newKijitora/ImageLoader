@@ -43,6 +43,9 @@ class ImageLoader {
                     if (dot / 2 != 0) {
                         o = Math.floor((dot / 2));
                     }
+                    if (this.array[i * dot + o][j * dot + o] == undefined) {
+                        continue;
+                    }
                     let style = "rgba(" + this.array[i * dot + o][j * dot + o].data[0] + "," + this.array[i * dot + o][j * dot + o].data[1] + "," + this.array[i * dot + o][j * dot + o].data[2] + "," + this.array[i * dot + o][j * dot + o].data[3] + ")"; // 塗りつぶし色
                     this.array[i * dot][j * dot].fill(context, dot, style);
                 }
