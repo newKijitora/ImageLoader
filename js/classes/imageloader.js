@@ -41,11 +41,15 @@ class ImageLoader {
             if (dot / 2 == 0) {
                 l = 1;
             } else {
-                l = dot / 2 + 1;
+                l = dot / 2;
             }
             for (let i = 0; i < this.array.length / dot; i++) {
                 for (let j = 0; j < this.array[i].length / dot; j++) {
-                    let style = "rgba(" + this.array[i * l][j * l].data[0] + "," + this.array[i * l][j * l].data[1] + "," + this.array[i * l][j * l].data[2] + "," + this.array[i * l][j * l].data[3] + ")"; // 塗りつぶし色
+                    let o = 0;
+                    if (dot / 2 != 0) {
+                        o = dot / 2;
+                    }
+                    let style = "rgba(" + this.array[i * l + o][j * l + o].data[0] + "," + this.array[i * l + o][j * l + o].data[1] + "," + this.array[i * l + o][j * l + o].data[2] + "," + this.array[i * l + o][j * l + o].data[3] + ")"; // 塗りつぶし色
                     this.array[i * dot][j * dot].fill(context, dot, style);
                 }
             }
