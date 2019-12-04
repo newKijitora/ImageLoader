@@ -45,7 +45,8 @@ class ImageLoader {
             }
             for (let i = 0; i < this.array.length / dot; i++) {
                 for (let j = 0; j < this.array[i].length / dot; j++) {
-                    this.array[i * l][j * l].fill(context, dot);
+                    let style = "rgba(" + this.array[i * l][j * l].data[0] + "," + this.array[i * l][j * l].data[1] + "," + this.array[i * l][j * l].data[2] + "," + this.data[3] + ")"; // 塗りつぶし色
+                    this.array[i * dot][j * dot].fill(context, dot, style);
                 }
             }
         }
@@ -63,8 +64,8 @@ class Pixel {
     }
     
     // 塗りつぶし
-    fill(context, dot) {
-        context.fillStyle = "rgba(" + this.data[0] + "," + this.data[1] + "," + this.data[2] + "," + this.data[3] + ")"; // 塗りつぶし色
+    fill(context, dot, rgba) {
+        context.fillStyle = rgba; // 塗りつぶし色
         context.fillRect(this.posX, this.posY, dot, dot); // 塗りつぶしの実行
     }
 }
