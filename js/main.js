@@ -16,6 +16,7 @@ if (canvas.getContext) {
     image.onload = function(event) {
         imageLoader.loadImage(image);
         imageLoader.draw(canvas, 1);
+        console.log("done");
         loaded = true;
     }
 

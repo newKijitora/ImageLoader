@@ -109,12 +109,7 @@ class Pixel {
     // 塗りつぶし
     fill(context, width, height, rgba) {
         // 塗りつぶし色の設定
-        if (rgba == undefined) {
-            context.fillStyle = this.rgba;
-        } else {
-            context.fillStyle = rgba;
-        }
-
+        context.fillStyle = rgba;
         context.fillRect(this.posX, this.posY, width, height);
     }
 }
